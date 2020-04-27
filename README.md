@@ -1,1 +1,1 @@
-# authorization-manager-cli
+# Kerberos platform cli

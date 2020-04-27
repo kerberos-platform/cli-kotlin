@@ -76,8 +76,8 @@ allprojects {
 sonarqube {
     properties {
         property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.organization", "authorization-manager")
-        property("sonar.projectKey", "authorization-manager_cli-kotlin")
+        property("sonar.organization", "kerberos-platform")
+        property("sonar.projectKey", "kerberos-platform_cli-kotlin")
     }
 }
 // SonarQube -- END
@@ -155,7 +155,7 @@ publishing {
             pom {
                 name.set("CLI Kotlin")
                 description.set("A concise description of my library")
-                url.set("https://github.com/authorization-manager/cli-kotlin")
+                url.set("https://github.com/kerberos-platform/cli-kotlin")
                 licenses {
                     license {
                         name.set("Apache License, Version 2.0")
@@ -170,9 +170,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/authorization-manager/cli-kotlin.git")
-                    developerConnection.set("scm:git:ssh://github.com/authorization-manager/cli-kotlin.git")
-                    url.set("https://github.com/authorization-manager/cli-kotlin")
+                    connection.set("scm:git:git://github.com/kerberos-platform/cli-kotlin.git")
+                    developerConnection.set("scm:git:ssh://github.com/kerberos-platform/cli-kotlin.git")
+                    url.set("https://github.com/kerberos-platform/cli-kotlin")
                 }
             }
         }
@@ -187,8 +187,8 @@ bintray {
     pkg.apply {
         repo = "maven"
         name = "cli-kotlin"
-        userOrg = "authorization-manager"
-        vcsUrl = "https://github.com/authorization-manager/cli-kotlin"
+        userOrg = "kerberos-platform"
+        vcsUrl = "https://github.com/kerberos-platform/cli-kotlin"
         version.apply {
             name = project.version.toString()
         }
