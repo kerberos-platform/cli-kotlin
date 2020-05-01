@@ -147,7 +147,7 @@ val mavenPublicationName: String = "maven"
 publishing {
     publications {
         create<MavenPublication>(mavenPublicationName) {
-            groupId = "com.davidgracia.software.authorizationmanager"
+            groupId = "com.github.kerberos"
             artifactId = "cli-kotlin"
             version = project.version.toString()
 
@@ -160,13 +160,6 @@ publishing {
                     license {
                         name.set("Apache License, Version 2.0")
                         url.set("https://www.apache.org/licenses/LICENSE-2.0")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("dgraciac")
-                        name.set("David Gracia Celemendi")
-                        email.set("david.gracia.celemendi@gmail.com")
                     }
                 }
                 scm {
