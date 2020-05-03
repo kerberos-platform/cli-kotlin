@@ -105,7 +105,7 @@ sonarqube {
     properties {
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.organization", "kerberos-platform")
-        property("sonar.projectKey", "kerberos-platform_authorization-service")
+        property("sonar.projectKey", "kerberos-platform_cli-kotlin")
     }
 }
 // SonarQube -- END
