@@ -100,16 +100,6 @@ allprojects {
 }
 // JACOCO -- END
 
-// SonarQube -- BEGIN
-sonarqube {
-    properties {
-        property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.organization", "kerberos-platform")
-        property("sonar.projectKey", "kerberos-platform_cli-kotlin")
-    }
-}
-// SonarQube -- END
-
 // TEST LOGGING -- BEGIN
 allprojects {
     tasks.withType<Test> {
@@ -174,6 +164,16 @@ allprojects {
 // Dependencies -- END
 
 // #####################################################################################################################
+
+// SonarQube -- BEGIN
+sonarqube {
+    properties {
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.organization", "kerberos-platform")
+        property("sonar.projectKey", "kerberos-platform_cli-kotlin")
+    }
+}
+// SonarQube -- END
 
 // Publishing -- BEGIN
 val mavenPublicationName: String = "maven"
