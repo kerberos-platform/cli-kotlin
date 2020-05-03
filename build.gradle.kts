@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 // PLUGINS -- BEGIN
 plugins {
     kotlin("jvm") version "1.3.72"
+    `java-library`
     jacoco
     id("org.sonarqube") version "2.8"
     id("com.jfrog.bintray") version "1.8.5"
@@ -10,9 +13,30 @@ plugins {
 
 allprojects {
     apply(plugin = "kotlin")
-    java.sourceCompatibility = JavaVersion.VERSION_1_8
 }
 // PLUGINS -- END
+
+// JAVA VERSION -- BEGIN
+allprojects {
+    java.sourceCompatibility = JavaVersion.VERSION_11
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
+}
+// JAVA VERSION -- END
+
+// NULLABILITY -- BEGIN
+allprojects {
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+        }
+    }
+}
+// NULLABILITY -- END
 
 // SPOTLESS -- BEGIN
 allprojects {
@@ -81,7 +105,7 @@ sonarqube {
     properties {
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.organization", "kerberos-platform")
-        property("sonar.projectKey", "kerberos-platform_cli-kotlin")
+        property("sonar.projectKey", "kerberos-platform_authorization-service")
     }
 }
 // SonarQube -- END
@@ -130,20 +154,26 @@ allprojects {
 // Dependencies -- BEGIN
 allprojects {
     repositories {
+        mavenCentral()
         jcenter()
     }
 
     dependencies {
         "implementation"(platform(kotlin("bom")))
         "implementation"(kotlin("stdlib-jdk8"))
+        "implementation"(kotlin("reflect"))
+        "implementation"("javax.inject:javax.inject:1")
 
         "testImplementation"("org.junit.jupiter:junit-jupiter-api:5.6.2")
         "testRuntimeOnly"("org.junit.jupiter:junit-jupiter-engine:5.6.2")
         "testImplementation"("io.mockk:mockk:1.10.0")
         "testImplementation"("org.assertj:assertj-core:3.15.0")
+        "testImplementation"("com.github.tomakehurst:wiremock-jre8:2.26.3")
     }
 }
 // Dependencies -- END
+
+// #####################################################################################################################
 
 // Publishing -- BEGIN
 val mavenPublicationName: String = "maven"
